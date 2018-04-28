@@ -1,14 +1,14 @@
 import os
 import logging
 import requests
-from pycoins import config
+from pycoins import CONFIG
 
 
 class Alphavantage:
     def __init__(self, api_key):
         self.api_key = api_key
-        self.url = config.get('alphavantage', 'url').format(api_key=api_key)
-        self.csv_path = os.path.expanduser(config.get('data', 'csv_path'))
+        self.url = CONFIG.get('alphavantage', 'url').format(api_key=api_key)
+        self.csv_path = os.path.expanduser(CONFIG.get('data', 'csv_path'))
 
     def store_data(self):
         log = logging.getLogger(__name__)

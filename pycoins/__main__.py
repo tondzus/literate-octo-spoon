@@ -1,13 +1,13 @@
 import os
 import logging
 import argparse
-from pycoins import runner, config
+from pycoins import runner, CONFIG
 
 
 def init_logging():
-    logpath = os.path.expanduser(config.get('logging', 'path'))
-    loglevel = config.get('logging', 'level').upper()
-    logformat = config.get('logging', 'format')
+    logpath = os.path.expanduser(CONFIG.get('logging', 'path'))
+    loglevel = CONFIG.get('logging', 'level').upper()
+    logformat = CONFIG.get('logging', 'format')
     os.makedirs(os.path.dirname(logpath), exist_ok=True)
     logging.basicConfig(filename=logpath, level=getattr(logging, loglevel),
                         format=logformat)
