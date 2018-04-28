@@ -1,0 +1,4 @@
+pycoins
+*******
+
+Bitcoin history analyzer
