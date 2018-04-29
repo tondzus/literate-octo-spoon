@@ -4,6 +4,7 @@ from pycoins import datasources, analyzers
 def get_analyzer(engine):
     return {
         'memory': analyzers.InMemoryAnalyzer,
+        'sqlite': analyzers.SQLiteAnalyzer,
     }[engine]
 
 

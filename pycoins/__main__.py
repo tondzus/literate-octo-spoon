@@ -38,7 +38,7 @@ download_parser.add_argument('--api-key',
 download_parser.set_defaults(command=download_command)
 
 analyze_parser = subparsers.add_parser('analyze')
-analyze_parser.add_argument('engine', choices=['memory'])
+analyze_parser.add_argument('engine', choices=['memory', 'sqlite'])
 analyze_parser.add_argument('analysis', choices=['week-means', 'greatest-span'])
 analyze_parser.add_argument('--output-csv', default=None,
                             help='Week mean prices will be stored here')
