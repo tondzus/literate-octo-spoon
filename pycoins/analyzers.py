@@ -17,7 +17,7 @@ class InMemoryAnalyzer:
         result = data.groupby('iso_week')['close'].mean()\
             .reset_index().sort_values(by='iso_week')\
             .rename(columns={'close': 'close_mean'})
-        result.to_csv(output_csv_path, index=False)
+        result.to_csv(output_csv_path, index=False, line_terminator='\r\n')
 
     def greatest_relative_closing_span(self):
         data = pd.read_csv(self.csv_path)
