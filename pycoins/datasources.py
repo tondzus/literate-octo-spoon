@@ -27,16 +27,19 @@ class Alphavantage:
         log = logging.getLogger(__name__)
         log.debug('Writing data to %s', self.csv_path)
         os.makedirs(os.path.dirname(self.csv_path), exist_ok=True)
+        strptime = datetime.datetime.strptime
         with open(self.csv_path, 'w', newline='') as fp:
             csv_writer = csv.writer(fp)
             header = [
-                'date', 'symbol', 'market', 'open', 'close', 'high', 'low',
-                'volume', 'market_cap'
+                'date', 'iso_week', 'symbol', 'market', 'open', 'close',
+                'high', 'low', 'volume', 'market_cap'
             ]
             csv_writer.writerow(header)
             for date, date_dict in date_map.items():
                 csv_row = self._extract_from_date_dict(date_dict)
                 csv_row['date'] = date
+                date_obj = strptime(date, '%Y-%m-%d').date()
+                csv_row['iso_week'] = '%d-W%02d' % date_obj.isocalendar()[:2]
                 csv_writer.writerow([csv_row[h] for h in header])
 
     def _write_sqlite(self, date_map):
@@ -49,6 +52,7 @@ class Alphavantage:
         for date, date_dict in date_map.items():
             csv_row = self._extract_from_date_dict(date_dict)
             csv_row['date'] = strptime(date, '%Y-%m-%d').date()
+            csv_row['iso_week'] = '%d-W%02d' % csv_row['date'].isocalendar()[:2]
             rec = models.MarketEntry(**csv_row)
             objects.append(rec)
 

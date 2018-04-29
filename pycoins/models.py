@@ -8,6 +8,7 @@ class MarketEntry(BaseModel):
 
     id = Column(Integer, primary_key=True)
     date = Column(Date)
+    iso_week = Column(String)
     symbol = Column(String)
     market = Column(String)
     open = Column(Float)
