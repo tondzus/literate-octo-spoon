@@ -10,7 +10,9 @@ class Alphavantage:
     def __init__(self, api_key):
         self.api_key = api_key
         self.url = CONFIG.get('alphavantage', 'url').format(api_key=api_key)
-        self.csv_path = os.path.expanduser(CONFIG.get('data', 'csv_path'))
+        self.csv_path = os.path.abspath(
+            os.path.expanduser(CONFIG.get('data', 'csv_path'))
+        )
 
     def _extract_from_date_dict(self, original_date_dict):
         return {

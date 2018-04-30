@@ -1,5 +1,6 @@
 ### Project specific section
 *.csv
+*.sqlite3
 
 ### IntelliJ project
 .idea/

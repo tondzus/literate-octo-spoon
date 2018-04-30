@@ -8,7 +8,9 @@ from sqlalchemy import func, desc
 
 class InMemoryAnalyzer:
     def __init__(self):
-        self.csv_path = os.path.expanduser(CONFIG.get('data', 'csv_path'))
+        self.csv_path = os.path.abspath(
+            os.path.expanduser(CONFIG.get('data', 'csv_path'))
+        )
         if not os.path.isfile(self.csv_path):
             raise ValueError('Data is not available: %s' % self.csv_path)
 
