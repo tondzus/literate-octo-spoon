@@ -11,5 +11,6 @@ setup(
     author_email='tms.stibrany@gmail.com',
     url='https://github.com/tondzus/pycoins',
     packages=find_packages(),
+    package_data={'pycoins': ['pycoins.ini']},
     requires=['requests', 'sqlalchemy', 'pandas'],
 )

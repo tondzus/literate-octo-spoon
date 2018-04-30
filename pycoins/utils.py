@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 
 def load_config():
     package_conf = pkg_resources.resource_filename(
-        pkg_resources.Requirement('pycoins'), 'pycoins.ini'
+        'pycoins', 'pycoins.ini'
     )
     homedir_conf = os.path.expanduser('~/.pycoins.ini')
     config_files = [package_conf, homedir_conf]
