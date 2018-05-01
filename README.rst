@@ -1,6 +1,8 @@
 literate-octo-spoon
 *******************
 
+Tested with python 3.6
+
 Installation
 ============
 
