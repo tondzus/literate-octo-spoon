@@ -39,7 +39,7 @@ def challenge_command(args):
     print('Greatest relative price week (memory):', grp_memory)
     print('Greatest relative price week (sqlite):', grp_sqlite)
 
-    os.makedirs(args.output_folder, exist_ok=True)
+    os.makedirs(os.path.abspath(args.output_folder), exist_ok=True)
     memory_csv = os.path.join(
         args.output_folder, 'mean_week_price_memory.csv'
     )
@@ -72,7 +72,7 @@ analyze_parser.set_defaults(command=analyze_command)
 complete_parser = subparsers.add_parser('challenge')
 complete_parser.add_argument('--api-key',
                              help='Used for REST api authentication')
-complete_parser.add_argument('--output-folder',
+complete_parser.add_argument('--output-folder', default='.',
                              help='Mean week prices will be stored here.')
 complete_parser.set_defaults(command=challenge_command)
 
